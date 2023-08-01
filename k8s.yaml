@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deepak-banking
+  labels:
+    app: deepak-banking-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: deepak-banking-app
+  template:
+    metadata:
+      labels:
+        app: deepak-banking-app
+    spec:
+      containers:
+      - name: deepak-banking-container
+        image: deepakdk9938/banking-app
+        ports:
+        - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: deepak-banking-service
+  labels:
+    app: deepak-banking-app
+spec:
+  selector:
+    app: deepak-banking-app
+
+  type: NodePort
+  ports:
+  - nodePort: 30100
+    port: 80
+    targetPort: 8081
