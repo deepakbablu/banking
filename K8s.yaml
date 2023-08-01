@@ -18,7 +18,7 @@ spec:
       - name: deepak-banking-container
         image: deepakdk9938/deepak-banking-app
         ports:
-        - containerPort: 8081
+        - containerPort: 8084
 ---
 apiVersion: v1
 kind: Service
@@ -32,6 +32,6 @@ spec:
 
   type: NodePort
   ports:
-  - nodePort: 30100
-    port: 80
-    targetPort: 8081
+  - nodePort: 31100
+    port: 84
+    targetPort: 8084
